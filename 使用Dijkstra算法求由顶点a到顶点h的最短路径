@@ -1,0 +1,54 @@
+#include<iostream>
+#include<cstdio>
+#define MAXN 2147483647
+using namespace std;
+int n,m,s;
+struct G{
+    int u;
+    int v;
+    int w;
+    int next;
+}e[500001];
+int head[500001];
+int d[500001];
+int read(){
+    int num=0;
+    char ch=getchar();
+    while(ch<'0' || ch>'9') ch=getchar();
+    while(ch>='0' && ch<='9'){
+        num=num*10+ch-'0';
+        ch=getchar();
+    }
+    return num;
+}
+bool v[500001];
+int main(){
+    int i,j;
+    n=read();
+    m=read();
+    s=read();
+    for(i=1;i<=m;i++){
+        int a=read(),b=read(),c=read();
+        e[i].u=a;
+        e[i].v=b;
+        e[i].w=c;
+        e[i].next=head[a];
+        head[a]=i;
+    }
+    for(i=1;i<=n;i++) d[i]=MAXN; //初始化
+    d[s]=0;
+    for(i=1;i<=n;i++){
+        int k=0,minn=MAXN;
+        for(j=1;j<=n;j++) //寻找距离最小的点
+          if(minn>d[j] && !v[j]){
+              minn=d[j];
+              k=j;
+          }
+        v[k]=1; //标记为访问过
+        for(j=head[k];j!=0;j=e[j].next)
+            if(!v[e[j].v] && d[e[j].v]>d[e[j].u]+e[j].w) //更新节点
+            d[e[j].v]=d[e[j].u]+e[j].w;
+    }
+    for(i=1;i<=n;i++) cout<<d[i]<<" ";
+    return 0;
+}
