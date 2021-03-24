@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<stdlib.h>
+#pragma warning(disable:4996)
+
+typedef int KeyType;
+typedef char InfoType;
+
+typedef struct {
+	KeyType key;
+	InfoType info;
+}Key;
+
+void Search_shunxu(Key* K, KeyType key, int len) {
+	for (int i = 1; i < len; ++i) {
+		if (K[i].key == key) {
+			printf("%c", K[i].info);
+			break;
+		}
+	}
+}
+
+void Search_jian(Key* K, KeyType key, int len) {
+	K[0].key = key;
+	for (int i = len; K[i].key != key; i--) {
+		printf("%c\n", K[i].info);
+	}
+}
+
+int main() {
+	Key* K;
+	int i, M;
+	scanf("%d", &M);
+	K = (Key*)malloc((M + 1) * sizeof(Key));
+	for (i = 1; i < M; i++) {
+		scanf("%d %c", &K[i].key,&K[i].info);
+
+	}
+	Search_shunxu(K, 4, M);
+	printf("\n");
+
+	Search_jian(K, 5, M);
+	printf("\n");
+
+	return 0;
+}
