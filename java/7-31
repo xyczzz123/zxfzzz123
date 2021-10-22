@@ -1,0 +1,19 @@
+package xyc;
+import java.util.Scanner;
+public class xyc_1 {   
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("Enter list1: ");
+		int n1 = in.nextInt();
+		int[] list1 = new int [n1 + 1];
+		for (int i = 1; i <= n1; ++i) list1[i] = in.nextInt();
+		System.out.print("Enter list2: ");
+		int n2 = in.nextInt();
+		int[] list2 = new int [n2 + 1];
+		for (int i = 1; i <= n2; ++i) list2[i] = in.nextInt();
+		int[] list = merge(list1, list2);
+		System.out.print("The merge list is");
+		for (int i = 1; i <= n1 + n2; ++i) {
+			System.out.print(" " + list[i]);
+		}
+}
