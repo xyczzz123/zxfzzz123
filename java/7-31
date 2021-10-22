@@ -16,4 +16,16 @@ public class xyc_1 {
 		for (int i = 1; i <= n1 + n2; ++i) {
 			System.out.print(" " + list[i]);
 		}
+	}
+	
+	public static int[] merge(int[] list1, int[] list2) {
+		int[] list = new int [list1.length + list2.length + 1];
+		int f1 = 1, f2 = 1, f = 1;
+		while (f1 < list1.length || f2 < list2.length) {
+			if (f2 >= list2.length || list1[f1] < list2[f2]) list[f++] = list1[f1++];
+			else list[f++] = list2[f2++];
+		}
+		return list;
+	}
 }
+
