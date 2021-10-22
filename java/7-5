@@ -1,0 +1,31 @@
+package xyc;
+
+import java.util.Scanner;
+
+public class xyc_1 {
+    public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		
+		System.out.print("Enter ten numbers: ");
+		
+		int _T = 10, a, cnt = 0;
+		int[] arr = new int[10];
+		
+		while (_T-- != 0) {
+			a = in.nextInt();
+			for (int i = 0; i <= cnt; ++i) {
+				if (arr[i] == a) break;
+				if (i == cnt) {
+					arr[cnt++] = a;
+					break;
+				}
+			}
+		}
+		System.out.printf("The number of distinct number is %d\n", cnt);	
+		System.out.print("The distinct numbers are: ");
+		for (int i = 0; i < cnt; ++i) {
+			if (i != 0) System.out.print(' ');
+			System.out.printf("%d", arr[i]);
+		}
+	}
+}
