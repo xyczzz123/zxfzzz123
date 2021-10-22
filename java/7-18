@@ -1,0 +1,30 @@
+package xyc;
+
+import java.util.Scanner;
+
+public class xyc_1 {
+    public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		double[] arr = new double [12];
+		double tmp;
+		
+		System.out.print("Enter ten numbers: ");
+		for (int i = 0; i < 10; ++i) {
+			arr[i] = in.nextDouble();
+		}
+		
+		for (int i = 0; i < 10; ++i) {
+			for (int j = i; j < 10; ++j) {
+				if (arr[j] > arr[j + 1]) {
+					tmp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = tmp;
+				}
+			}
+		}
+		
+		System.out.print("The sorted numbers are:");
+		for (int i = 0; i < 10; ++i) System.out.print(arr[i] + " ");
+	}
+
+}
