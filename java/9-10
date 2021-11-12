@@ -1,0 +1,59 @@
+package homework7;
+
+import java.util.Scanner;
+
+public class hw9_10 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		double a, b, c;
+		Scanner in = new Scanner(System.in);
+		
+		System.out.print("Enter a, b, c: ");
+		a = in.nextDouble();
+		b = in.nextDouble();
+		c = in.nextDouble();
+		
+		QuadraticEquation equa = new QuadraticEquation(a, b, c);
+		if (equa.getDiscriminant() < 0) {
+			System.out.println("The equation has no roots.");
+		} else if (equa.getDiscriminant() == 0) {
+			System.out.print("The equation has one root ");
+			System.out.println(equa.getRoot1());
+		} else {
+			System.out.print("The equation has two roots ");
+			System.out.println(equa.getRoot1() + " and " + equa.getRoot2());
+		}
+	}
+	
+	public static class QuadraticEquation{
+		private double a, b, c;
+		
+		public QuadraticEquation() {
+			
+		}
+		
+		public QuadraticEquation(double a, double b,  double c) {
+			this.a = a;
+			this.b = b;
+			this.c = c;
+		}
+		
+		public double getDiscriminant() {
+			return this.b * this.b - 4 * this.a * this.c;
+		}
+		
+		public double getRoot1() {
+			if (getDiscriminant() < 0) return 0;
+			double a = this.a, b = this.b, c = this.c;
+			return (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a);
+		}
+		
+		public double getRoot2() {
+			if (getDiscriminant() < 0) return 0;
+			double a = this.a, b = this.b, c = this.c;
+			return (-b - Math.sqrt(b * b - 4 * a * c)) / (2 * a);
+		}
+	}
+
+}
