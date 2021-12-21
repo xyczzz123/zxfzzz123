@@ -1,0 +1,63 @@
+ackage xyc;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+public class one{
+    static int n;
+    static String isbn, name, press;
+    static double price;
+    public static void main(String[] args) {
+        List<Book> listBooks = new ArrayList<Book>();
+        HashMap<String, Book> mapBooks = new HashMap<String, Book>();
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter the num of books: ");
+        n = in.nextInt();
+        for (int i = 1; i <= n; ++i) {
+            System.out.print("Enter the ISBN of the book: ");
+            isbn = in.next();
+            System.out.print("Enter the name of the book: ");
+            name = in.next();
+            System.out.print("Enter the price of the book: ");
+            price = in.nextDouble();
+            System.out.print("Enter the press of the book: ");
+            press = in.next();
+            Book book = new Book(isbn, name, price, press);
+            listBooks.add(book);
+            mapBooks.put(isbn, book);
+        }
+        for (Book book : listBooks) {
+            System.out.println("The information of books in the list are as follows:");
+            System.out.print("ISBN: " + book.isbn + "   " + "name: " + book.name + "   ");
+            System.out.printf("price: %.2f   ", book.price);
+            System.out.println("press: " + book.press);
+        }
+        System.out.println("\nThe information of books in the HashMap are as follows:");
+        Iterator iter = mapBooks.entrySet().iterator();
+        while (iter.hasNext()) {
+            Map.Entry entry = (Map.Entry)iter.next();
+            Book tmp = (Book)entry.getValue();
+            System.out.print("ISBN: " + tmp.isbn + "   " + "name: " + tmp.name + "   ");
+            System.out.printf("price: %.2f   ", tmp.price);
+            System.out.println("press: " + tmp.press);
+        }
+    }
+}
+class Book {
+    public String isbn, name, press;
+    public double price;
+    
+    public Book() {
+        
+    }
+    
+    public Book(String isbn, String name, double price, String press) {
+        this.isbn = isbn;
+        this.name = name;
+        this.price = price;
+        this.press = press;
+    }
+}
