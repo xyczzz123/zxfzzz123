@@ -1,0 +1,35 @@
+package xyc;
+
+import java.util.Scanner;
+public class xyc_1 {
+    public static void main(String[] args) { // TODO Auto-generated method stub System.out.print("输入");
+        Scanner input = new Scanner(System.in);
+        int year = input.nextInt();
+        int month = input.nextInt();
+        int day = input.nextInt();
+        int q = day;
+        int m = month;
+        if (m <= 2) {
+            m += 12;
+            year--;
+        }
+        int j = year / 100;
+        int k = year % 100;
+        int h = (q + (int) (26 * (m + 1) / 10) + k + (int) (k / 4) + (int) (j / 4) + 5 * j) % 7;
+        if (h == 0)
+            System.out.println("Saturday");
+        else if (h == 1)
+            System.out.println("Sunday");
+        else if (h == 2)
+            System.out.println("Monday");
+        else if (h == 3)
+            System.out.println("Tuesday");
+        else if (h == 4)
+            System.out.println("Wednesday");
+        else if (h == 5)
+            System.out.println("Thusday");
+        else if (h == 6)
+            System.out.println("Friday");
+        input.close();
+    }
+}
