@@ -1,0 +1,15 @@
+package xyc;
+
+import java.util.Scanner;
+public class xyc_1 {
+    public static void main(String[] args) {
+        System.out.print("输入");
+        Scanner input = new Scanner(System.in);
+        double x = input.nextDouble();
+        double y = input.nextDouble();
+        if (x > 0 && y > 0 && y < -0.5 * x + 100)
+            System.out.println("in");
+        elseSystem.out.println("out");
+        input.close();
+    }
+}
